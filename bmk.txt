@@ -1,0 +1,42 @@
+<div class="table-responsive">
+<h2><center>DATA PESERTA DITERIMA PELATIHAN</center></h2>
+      <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+        <thead>
+          <tr>
+            <tr class="pertama">
+              <th><center>No</center></th>
+              <th><center>Nik</center></th>
+              <th><center>Nama</center></th>
+              <th><center>Tanggal Lahir</center></th>
+              <th><center>Alamat</center></th>
+              <th><center>Jenis Kelamin</center></th>
+              <th><center>Nomer Hp</center></th>
+              <th><center>Nama Pelatihan</center></th>
+            </tr>
+          </thead>
+          <?php
+          include 'koneksi/koneksi.php';
+          $no = 1;
+          $data = mysqli_query($db,"SELECT * from peserta where status = 'sudah' order by nama DESC");
+          while($d = mysqli_fetch_array($data)){
+            ?>
+            <tr>
+              <td><center><?php echo $no++; ?>.</center></td>
+              <td><center><?php echo $d['nik']; ?><center></td>
+                <td><center><?php echo $d['nama']; ?><center></td>
+                  <td><center><?php echo date('d F Y', strtotime ($d['tgl_lahir']))?><center></td>
+                    <td><center><?php echo $d['alamat']; ?><center></td>
+                      <td><center><?php echo $d['jekel']; ?><center></td>
+                        <td><center><?php echo $d['no_hp']; ?><center></td>
+                          <td><center><?php echo $d['nama_pelatihan']; ?><center></td>
+                            </tr>
+                            <?php
+                          }
+                          ?>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
